@@ -7,13 +7,19 @@ public class playercontroller : MonoBehaviour
 {
     public float movementSpeed;
     public float rotationSpeed;
-    public GameObject serpiente;
-    public List <string>
+    public GameObject myPrefab;
+    public float Insert;
+
+    private List<GameObject> namesOfDestroyedObjects = new List<GameObject>();
+    private List<Vector3> posicionserpiente = new List<Vector3>();
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        SerpientePrefab();
     }
 
     // Update is called once per frame
@@ -35,7 +41,24 @@ public class playercontroller : MonoBehaviour
         {
             transform.Rotate(0, -rotationSpeed, 0);
         }
-    }
 
-    GameObject prefab = Instantiate(serpiente);
+        //transform.position = transform.forward * movementSpeed * Time.deltaTime;
+        //float rotationSpeed = Input.GetAxis("Horizontal") * rotationSpeed;
+
+        posicionserpiente.Insert(0, transform.position);
+
+        foreach (GameObject prefab in namesOfDestroyedObjects) ;
+        {
+            int i = 0;
+            Vector3 posicion = posicionserpiente[Mathf.Min(i)];
+            i++;
+        }
+    }
+    private void SerpientePrefab()
+    {
+        GameObject prefab = Instantiate(myPrefab);
+        namesOfDestroyedObjects.Add(myPrefab);
+    }
+    
+    
 }

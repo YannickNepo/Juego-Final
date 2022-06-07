@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playercontroller : MonoBehaviour
 {
     public float movementSpeed;
     public float rotationSpeed;
+    public GameObject serpiente;
+    public List <string>
 
     // Start is called before the first frame update
     void Start()
@@ -33,4 +36,6 @@ public class playercontroller : MonoBehaviour
             transform.Rotate(0, -rotationSpeed, 0);
         }
     }
+
+    GameObject prefab = Instantiate(serpiente);
 }
